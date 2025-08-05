@@ -1,0 +1,78 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignEscapedNewlines: Left
+AllowAllArgumentsOnNextLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: Empty
+AlwaysBreakBeforeMultilineStrings: true
+BasedOnStyle: Mozilla
+BinPackLongBracedList: false
+BreakAdjacentStringLiterals: false
+BreakAfterReturnType: Automatic
+BreakBeforeBraces: Custom
+BreakBeforeTemplateCloser: true
+BreakBeforeTernaryOperators: false
+BreakBinaryOperations: RespectPrecedence
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterExternBlock: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: true
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyNamespace: false
+  SplitEmptyRecord: false
+BreakStringLiterals: false
+ColumnLimit: 255
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+EmptyLineBeforeAccessModifier: Never
+FixNamespaceComments: true
+IncludeBlocks: Merge
+IndentExternBlock: Indent
+IndentPPDirectives: BeforeHash
+IndentWidth: 4
+IndentWrappedFunctionNames: true
+InsertNewlineAtEOF: true
+InsertTrailingCommas: Wrapped
+JavaScriptQuotes: Single
+JavaScriptWrapImports: false
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
+LineEnding: LF
+NamespaceIndentation: All
+ObjCBinPackProtocolList: Never
+ObjCBlockIndentWidth: 4
+ObjCSpaceAfterProperty: false
+PackConstructorInitializers: CurrentLine
+QualifierAlignment: Left
+ReflowComments: IndentOnly
+RemoveEmptyLinesInUnwrappedLines: true
+RemoveParentheses: ReturnStatement
+RemoveSemicolon: true
+SeparateDefinitionBlocks: Never
+SortUsingDeclarations: Lexicographic
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeParens: ControlStatementsExceptControlMacros
+TabWidth: 4
+UseTab: ForContinuationAndIndentation
+VerilogBreakBetweenInstancePorts: false
+WrapNamespaceBodyWithEmptyLines: Never
