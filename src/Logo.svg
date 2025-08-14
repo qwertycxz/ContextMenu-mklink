@@ -1,0 +1,45 @@
+<svg height='1000' width='1000' xmlns='http://www.w3.org/2000/svg'>
+	<clipPath id='beam'>
+		<polygon points='
+			350, 0
+			425, 0
+			350, 500
+		' />
+	</clipPath>
+	<circle clip-path='url(#beam)' cx='350' cy='500' fill='none' r='425' stroke='gold' stroke-width='125' transform='rotate(5 350 400)' />
+	<circle clip-path='url(#beam)' cx='350' cy='500' fill='none' r='425' stroke='gold' stroke-width='125' transform='rotate(35 350 400)' />
+	<circle clip-path='url(#beam)' cx='350' cy='500' fill='none' r='425' stroke='gold' stroke-width='125' transform='rotate(65 350 400)' />
+
+	<clipPath id='button'>
+		<rect height='460' width='500' x='330' y='0' />
+	</clipPath>
+	<rect clip-path='url(#button)' fill='gold' height='700' width='500' rx='150' ry='150' x='50' y='200' />
+
+	<clipPath id='mouse'>
+		<polygon points='
+			0, 0
+			270, 0
+			270, 500
+			1000, 500
+			1000, 1000
+			0, 1000
+		' />
+	</clipPath>
+	<circle cx='300' cy='750' fill='silver' r='250' />
+	<rect clip-path='url(#mouse)' fill='silver' height='700' width='500' rx='150' ry='150' x='50' y='200' />
+
+	<clipPath id='link'>
+		<circle cx='750' cy='800' fill='none' r='15' />
+		<circle cx='675' cy='725' fill='none' r='15' />
+		<polygon points='
+			0, 0
+			1000, 0
+			1000, 1000
+			750, 1000
+			750, 725
+			0, 725
+		' />
+	</clipPath>
+	<rect clip-path='url(#link)' fill='none' height='275' width='150' rx='75' ry='75' stroke='darkcyan' stroke-width='30' transform='rotate(45 750 775)' x='675' y='525' />
+	<rect clip-path='url(#link)' fill='none' height='275' width='150' rx='75' ry='75' stroke='teal' stroke-width='30' transform='rotate(225 750 775)' x='675' y='525' />
+</svg>

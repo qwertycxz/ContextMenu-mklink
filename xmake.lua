@@ -19,12 +19,14 @@ set_warnings('everything', 'pedantic')
 target'x64'
 
 on_package(function(target)
-	os.cp('src/AppxManifest.xml', target:targetdir())
+	local directory = target:targetdir()
+	os.cp('src/AppxManifest.xml', directory)
 	local version, commit = target:get'version':match'^(%d+%.%d+%.%d+)%-?(%d*)'
 	if commit == '' then
 		commit = '0'
 	end
-	io.gsub(target:targetdir() .. '/AppxManifest.xml', "Version='0.0.0.0'", "Version='" .. version .. '.' .. commit .. "'")
+	io.gsub(directory .. '/AppxManifest.xml', "Version='0.0.0.0'", "Version='" .. version .. '.' .. commit .. "'")
+	os.runv('cim -h 1000 -w 1000 png src/Logo.svg', directory)
 end)
 
 local function format()
