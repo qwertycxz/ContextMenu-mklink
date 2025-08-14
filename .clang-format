@@ -10,6 +10,7 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: Empty
 AlwaysBreakBeforeMultilineStrings: true
 BasedOnStyle: Mozilla
+BinPackArguments: false
 BinPackLongBracedList: false
 BreakAdjacentStringLiterals: false
 BreakAfterReturnType: Automatic
@@ -42,7 +43,6 @@ BreakStringLiterals: false
 ColumnLimit: 255
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
-EmptyLineBeforeAccessModifier: Never
 FixNamespaceComments: true
 IncludeBlocks: Merge
 IndentExternBlock: Indent
@@ -68,7 +68,7 @@ ReflowComments: IndentOnly
 RemoveEmptyLinesInUnwrappedLines: true
 RemoveParentheses: ReturnStatement
 RemoveSemicolon: true
-SeparateDefinitionBlocks: Never
+SeparateDefinitionBlocks: Always
 SortUsingDeclarations: Lexicographic
 SpaceBeforeCpp11BracedList: true
 SpaceBeforeParens: ControlStatementsExceptControlMacros
