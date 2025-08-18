@@ -195,7 +195,7 @@ struct DirectoryJunction : Command {
 };
 
 struct InternetShortcut : Command {
-	InternetShortcut(path directory, path target) : Command(directory, target, L"shell32.dll,-14", L"*.url shortcut", L"Internet Shortcut", L"powershell", L".url") {}
+	InternetShortcut(path directory, path target) : Command(directory, target, L"shell32.dll,-14", L"Shortcut (.url)", L"Internet Shortcut", L"powershell", L".url") {}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
 		(void)psiItemArray;
@@ -212,7 +212,7 @@ struct InternetShortcut : Command {
 };
 
 struct ShellLink : Command {
-	ShellLink(path directory, path target) : Command(directory, target, L"shell32.dll,-25", L"*.lnk shortcut", L"Shell link", L"powershell", L".lnk") {}
+	ShellLink(path directory, path target) : Command(directory, target, L"shell32.dll,-25", L"Shortcut (.lnk)", L"Shell link", L"powershell", L".lnk") {}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
 		(void)psiItemArray;

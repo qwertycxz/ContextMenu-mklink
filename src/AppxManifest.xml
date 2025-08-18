@@ -1,0 +1,88 @@
+<Package
+	xmlns='http://schemas.microsoft.com/appx/manifest/foundation/windows10'
+	xmlns:com='http://schemas.microsoft.com/appx/manifest/com/windows10'
+	xmlns:desktop4='http://schemas.microsoft.com/appx/manifest/desktop/windows10/4'
+	xmlns:desktop5='http://schemas.microsoft.com/appx/manifest/desktop/windows10/5'
+	xmlns:rescap='http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities'
+	xmlns:uap='http://schemas.microsoft.com/appx/manifest/uap/windows10'
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:schemaLocation='
+		http://schemas.microsoft.com/appx/2014/phone/manifest https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/AppxPhoneManifestSchema2014.xsd
+		http://schemas.microsoft.com/appx/manifest/com/windows10 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/ComManifestSchema.xsd
+		http://schemas.microsoft.com/appx/manifest/com/windows10/2 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/ComManifestSchema_v2.xsd
+		http://schemas.microsoft.com/appx/manifest/com/windows10/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2019/ComManifestSchema_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/2 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2016/DesktopManifestSchema_v2.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/DesktopManifestSchema_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/4 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/DesktopManifestSchema_v4.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/5 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2018/DesktopManifestSchema_v5.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/6 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2018/DesktopManifestSchema_v6.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/7 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2020/DesktopManifestSchema_v7.xsd
+		http://schemas.microsoft.com/appx/manifest/desktop/windows10/8 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2021/DesktopManifestSchema_v8.xsd
+		http://schemas.microsoft.com/appx/manifest/foundation/windows10 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/FoundationManifestSchema.xsd
+		http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/RestrictedCapabilitiesManifestSchema.xsd
+		http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2016/RestrictedCapabilitiesManifestSchema_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities/6 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2018/RestrictedCapabilitiesManifestSchema_v6.xsd
+		http://schemas.microsoft.com/appx/manifest/foundation/windows10/windowscapabilities/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2016/WindowsCapabilitiesManifestSchema_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/iot/windows10/2 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/IotManifestSchema_v2.xsd
+		http://schemas.microsoft.com/appx/manifest/preview/windows10/msixappcompatsupport https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2019/PreviewManifestSchema_MsixAppCompatSupport.xsd
+		http://schemas.microsoft.com/appx/manifest/preview/windows10/msixappcompatsupport/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2020/PreviewManifestSchema_MsixAppCompatSupport_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/types https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/AppxManifestTypes.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/UapManifestSchema.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/2 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/UapManifestSchema_v2.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/3 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2015/UapManifestSchema_v3.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/4 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2016/UapManifestSchema_v4.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/5 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/UapManifestSchema_v5.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/6 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2017/UapManifestSchema_v6.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/7 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2018/UapManifestSchema_v7.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/8 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2018/UapManifestSchema_v8.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/10 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2019/UapManifestSchema_v10.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/11 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2019/UapManifestSchema_v11.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/12 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2020/UapManifestSchema_v12.xsd
+		http://schemas.microsoft.com/appx/manifest/uap/windows10/13 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2021/UapManifestSchema_v13.xsd
+		http://schemas.microsoft.com/appx/manifest/virtualization/windows10 https://github.com/microsoft/msix-packaging/raw/master/resources/AppxPackaging/Manifest/Schema/2020/VirtualizationManifestSchema.xsd
+	'
+>
+	<Applications>
+		<Application Id='ContextMenu.mklink'>
+			<Extensions>
+				<com:Extension Category='windows.comServer'>
+					<com:ComServer>
+						<com:SurrogateServer>
+							<com:Class Id='AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E' Path='x64.dll' ThreadingModel='Both' />
+						</com:SurrogateServer>
+					</com:ComServer>
+				</com:Extension>
+				<desktop4:Extension Category='windows.fileExplorerContextMenus'>
+					<desktop4:FileExplorerContextMenus>
+						<desktop5:ItemType Type='Directory\Background'>
+							<desktop5:Verb Clsid='AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E' Id='CreateLink' />
+						</desktop5:ItemType>
+					</desktop4:FileExplorerContextMenus>
+				</desktop4:Extension>
+			</Extensions>
+			<uap:VisualElements
+				AppListEntry='none'
+				BackgroundColor='transparent'
+				DisplayName='Context Menu mklink'
+				Description='Create symbolic link and hard link in context menu. (Windows 11 context menu supported)'
+				Square150x150Logo='Logo.png'
+				Square44x44Logo='Logo.png'
+			/>
+		</Application>
+	</Applications>
+	<Capabilities>
+		<rescap:Capability Name='runFullTrust' />
+	</Capabilities>
+	<Dependencies>
+		<TargetDeviceFamily MaxVersionTested='10.0.26100.0' MinVersion='10.0.0.0' Name='Windows.Universal' />
+	</Dependencies>
+	<Identity Name='ContextMenu.mklink' ProcessorArchitecture='x64' Publisher='CN=qwerty吃小庄' Version='0.0.0.0' />
+	<Properties>
+		<DisplayName>Context Menu mklink</DisplayName>
+		<PublisherDisplayName>qwerty吃小庄</PublisherDisplayName>
+		<Logo>Logo.png</Logo>
+	</Properties>
+	<Resources>
+		<Resource Language='en' />
+	</Resources>
+</Package>

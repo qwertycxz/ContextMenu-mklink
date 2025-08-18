@@ -1,11 +1,32 @@
+add_configfiles'src/AppxManifest.xml'
 add_files'src/**.cpp'
 add_includedirs'C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/cppwinrt'
 add_rules'mode.release'
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
+after_build(function(target)
+	import("detect.sdks.find_mingw")
+	local mingw_dir = find_mingw().bindir
+	local target_dir = target:targetdir()
+	local function link(file)
+		try {
+			function ()
+				os.ln(mingw_dir .. '/' .. file, target_dir .. '/' .. file)
+			end
+		}
+	end
+	link'libgcc_s_seh-1.dll'
+	link'libstdc++-6.dll'
+	link'libwinpthread-1.dll'
+	os.runv('cim -h 1000 -w 1000 png src/Logo.svg', target_dir)
+end)
 on_load(function(target)
-	local version = os.iorun'git describe --dirty --match v* --tags':gsub('[(^v)(\n$)]', '')
-	target:set('version', version)
+	local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
+	if commit == '' then
+		commit = '0'
+	end
+	target:set('version', version .. '.' .. commit)
+	target:set('configdir', target:targetdir())
 end)
 set_encodings'utf-8'
 set_exceptions'cxx'
@@ -17,17 +38,6 @@ set_project'ContextMenu-mklink'
 set_toolchains'mingw'
 set_warnings('everything', 'pedantic')
 target'x64'
-
-on_package(function(target)
-	local directory = target:targetdir()
-	os.cp('src/AppxManifest.xml', directory)
-	local version, commit = target:get'version':match'^(%d+%.%d+%.%d+)%-?(%d*)'
-	if commit == '' then
-		commit = '0'
-	end
-	io.gsub(directory .. '/AppxManifest.xml', "Version='0.0.0.0'", "Version='" .. version .. '.' .. commit .. "'")
-	os.runv('cim -h 1000 -w 1000 png src/Logo.svg', directory)
-end)
 
 local function format()
 	return table.join(os.files'src/**', os.files'**/*.json')
