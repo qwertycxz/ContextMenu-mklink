@@ -43,19 +43,19 @@
 	'
 >
 	<Applications>
-		<Application Id='ContextMenu.mklink'>
+		<Application Id='${Name}'>
 			<Extensions>
 				<com:Extension Category='windows.comServer'>
 					<com:ComServer>
 						<com:SurrogateServer>
-							<com:Class Id='AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E' Path='x64.dll' ThreadingModel='Both' />
+							<com:Class Id='${Class}' Path='${arch}.dll' ThreadingModel='Both' />
 						</com:SurrogateServer>
 					</com:ComServer>
 				</com:Extension>
 				<desktop4:Extension Category='windows.fileExplorerContextMenus'>
 					<desktop4:FileExplorerContextMenus>
 						<desktop5:ItemType Type='Directory\Background'>
-							<desktop5:Verb Clsid='AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E' Id='CreateLink' />
+							<desktop5:Verb Clsid='${Class}' Id='CreateLink' />
 						</desktop5:ItemType>
 					</desktop4:FileExplorerContextMenus>
 				</desktop4:Extension>
@@ -63,10 +63,10 @@
 			<uap:VisualElements
 				AppListEntry='none'
 				BackgroundColor='transparent'
-				DisplayName='Context Menu mklink'
+				DisplayName='${Display}'
 				Description='Create symbolic link and hard link in context menu. (Windows 11 context menu supported)'
-				Square150x150Logo='Logo.png'
-				Square44x44Logo='Logo.png'
+				Square150x150Logo='${Logo}'
+				Square44x44Logo='${Logo}'
 			/>
 		</Application>
 	</Applications>
@@ -76,11 +76,11 @@
 	<Dependencies>
 		<TargetDeviceFamily MaxVersionTested='10.0.26100.0' MinVersion='10.0.0.0' Name='Windows.Universal' />
 	</Dependencies>
-	<Identity Name='ContextMenu.mklink' ProcessorArchitecture='x64' Publisher='CN=qwerty吃小庄' Version='0.0.0.0' />
+	<Identity Name='${Name}' ProcessorArchitecture='${arch}' Publisher='CN=${Publisher}' Version='${VERSION}' />
 	<Properties>
-		<DisplayName>Context Menu mklink</DisplayName>
-		<PublisherDisplayName>qwerty吃小庄</PublisherDisplayName>
-		<Logo>Logo.png</Logo>
+		<DisplayName>${Display}</DisplayName>
+		<PublisherDisplayName>${Publisher}</PublisherDisplayName>
+		<Logo>${Logo}</Logo>
 	</Properties>
 	<Resources>
 		<Resource Language='en' />
