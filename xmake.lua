@@ -1,7 +1,8 @@
 add_configfiles'src/AppxManifest.xml'
-add_files'src/**.cpp'
+add_files('src/**.cpp', 'src/**.svg')
 add_includedirs'C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/cppwinrt'
-add_rules'mode.release'
+add_rules('logo', 'mode.release')
+add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++', '-lpthread', '-Wl,-Bdynamic')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
 on_load(function(target)
@@ -27,23 +28,6 @@ set_project'ContextMenu-mklink'
 set_toolchains'mingw'
 set_warnings('everything', 'pedantic')
 
-after_build(function(target)
-	import("detect.sdks.find_mingw")
-	local mingw_dir = find_mingw().bindir
-	local target_dir = target:targetdir()
-	local function link(file)
-		try {
-			function ()
-				os.ln(mingw_dir .. '/' .. file, target_dir .. '/' .. file)
-			end
-		}
-	end
-	link'libgcc_s_seh-1.dll'
-	link'libstdc++-6.dll'
-	link'libwinpthread-1.dll'
-	os.runv('cim -h 1000 -w 1000 png src/Logo.svg', target_dir)
-end)
-
 after_clean(function(target)
 	os.rm(target:targetdir())
 end)
@@ -68,3 +52,16 @@ end)
 set_menu{
 	description = 'Check code formatting.',
 }
+
+rule'logo'
+set_extensions'.svg'
+on_buildcmd_file(function (target, batchcmds, sourcefile, opt)
+	local targetfile = target:targetdir() .. '/' .. path.basename(sourcefile) .. '.png'
+	batchcmds:add_depfiles(sourcefile)
+	batchcmds:set_depcache(targetfile)
+	batchcmds:show_progress(opt.progress, "${color.build.object}converting %s", sourcefile)
+	batchcmds:vrunv('cim -h 1000 -w 1000 png', {
+		sourcefile,
+		targetfile,
+	})
+end)
