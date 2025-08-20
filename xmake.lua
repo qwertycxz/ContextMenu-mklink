@@ -10,10 +10,10 @@ on_load(function(target)
 	for i, v in ipairs(os.files('i18n/**.resw')) do
 		local language = v:match'language%-(.+)%.resw$'
 		if language then
-			resource = resource .. '<Resource Language="' .. language .. '"/>'
+			resource = resource .. '\n\t\t<Resource Language="' .. language .. '"/>'
 		end
 	end
-	target:get'configvar'.Resource = resource
+	target:get'configvar'.Resource = resource .. '\n\t'
 	local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
 	if commit == '' then
 		commit = '0'
