@@ -1,11 +1,19 @@
 add_configfiles'src/AppxManifest.xml'
-add_files('src/**.cpp', 'src/**.svg')
+add_files('i18n/**.resw', 'src/**.cpp', 'src/**.svg')
 add_includedirs'C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/cppwinrt'
-add_rules('logo', 'mode.release')
+add_rules('logo', 'mode.release', 'resource')
 add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++', '-lpthread', '-Wl,-Bdynamic')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
 on_load(function(target)
+	local resource = ''
+	for i, v in ipairs(os.files('i18n/**.resw')) do
+		local language = v:match'language%-(.+)%.resw$'
+		if language then
+			resource = resource .. '<Resource Language="' .. language .. '"/>'
+		end
+	end
+	target:get'configvar'.Resource = resource
 	local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
 	if commit == '' then
 		commit = '0'
@@ -39,7 +47,7 @@ end
 
 task'format'
 on_run(function()
-	os.runv('clang-format -i --Wno-error=unknown', format())
+	os.vrunv('clang-format -i --Wno-error=unknown', format())
 end)
 set_menu{
 	description = 'Format source code.',
@@ -58,10 +66,30 @@ set_extensions'.svg'
 on_buildcmd_file(function (target, batchcmds, sourcefile, opt)
 	local targetfile = target:targetdir() .. '/' .. path.basename(sourcefile) .. '.png'
 	batchcmds:add_depfiles(sourcefile)
-	batchcmds:set_depcache(targetfile)
+	batchcmds:set_depmtime(os.mtime(targetfile))
 	batchcmds:show_progress(opt.progress, "${color.build.object}converting %s", sourcefile)
 	batchcmds:vrunv('cim -h 1000 -w 1000 png', {
 		sourcefile,
 		targetfile,
+	})
+end)
+
+rule'resource'
+set_extensions'.resw'
+on_buildcmd_files(function (target, batchcmds, sourcebatch, opt)
+	local sourcedir = path.directory(sourcebatch.sourcefiles[1])
+	local targetfile = target:targetdir() .. '/resources.pri'
+	batchcmds:add_depfiles('src/pri.xml', sourcebatch.sourcefiles)
+	batchcmds:set_depmtime(os.mtime(targetfile))
+	batchcmds:show_progress(opt.progress, "${color.build.object}making %s", sourcedir)
+	batchcmds:vrunv('C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/makepri', {
+		'new',
+		'-cf',
+		'src/pri.xml',
+		'-o',
+		'-of',
+		targetfile,
+		'-pr',
+		sourcedir,
 	})
 end)

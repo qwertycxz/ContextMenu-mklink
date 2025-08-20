@@ -1,0 +1,10 @@
+<?xml-model href='https://github.com/qwertycxz/makepri.exe-config-xsd/raw/master/pri.xsd'?>
+<resources targetOsVersion='10.0.0'>
+	<index root='.' startIndexAt='.'>
+		<default>
+			<qualifier name='Language' value='en' />
+		</default>
+		<indexer-config convertDotsToSlashes='false' initialPath='' type='resw' />
+		<indexer-config filenameAsQualifier='true' foldernameAsQualifier='false' qualifierDelimiter='.' type='folder' />
+	</index>
+</resources>

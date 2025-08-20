@@ -82,7 +82,5 @@
 		<PublisherDisplayName>${Publisher}</PublisherDisplayName>
 		<Logo>${Logo}</Logo>
 	</Properties>
-	<Resources>
-		<Resource Language='en' />
-	</Resources>
+	<Resources>${Resource}</Resources>
 </Package>

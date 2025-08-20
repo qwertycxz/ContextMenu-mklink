@@ -7,5 +7,5 @@
 	#include <initguid.h>
 	#include <shlobj.h>
 	#include <shlwapi.h>
-	#include <winrt/base.h>
+	#include <winrt/windows.applicationmodel.resources.h>
 #endif

@@ -1,0 +1,47 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>新建链接</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>创建指向已复制的目录或文件的链接</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>符号链接（绝对）</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>无限制</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>符号链接（相对）</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>需相同卷</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>硬链接</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>仅文件，需相同卷</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>目录联结</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>仅目录，需相同计算机</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>快捷方式（.url）</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>Internet 快捷方式</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>快捷方式（.lnk）</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Shell 快捷方式</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>错误</value>
+	</data>
+</root>

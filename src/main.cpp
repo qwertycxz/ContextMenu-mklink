@@ -1,6 +1,12 @@
 #include "pch.hpp"
 using std::filesystem::exists, std::filesystem::is_directory, std::filesystem::path, std::format, std::wstring, std::wstring_view, winrt::check_bool, winrt::check_hresult, winrt::com_ptr, winrt::get_module_lock, winrt::hresult, winrt::hresult_error,
-	winrt::implements, winrt::make, winrt::throw_last_error;
+	winrt::implements, winrt::make, winrt::throw_last_error, winrt::Windows::ApplicationModel::Resources::ResourceLoader;
+
+static const auto resource = ResourceLoader::GetForViewIndependentUse();
+
+static const wchar_t* LOC(wstring_view key) {
+	return resource.GetString(key).c_str();
+}
 
 struct Command : implements<Command, IExplorerCommand> {
 	Command(path directory, path target, wstring_view icon, wstring_view title, wstring_view tip, wstring_view executable = L"cmd", wstring_view extension = L"") :
@@ -54,7 +60,7 @@ protected:
 	const path directory;
 	const path target;
 
-	const hresult createLink(const path link, const wstring_view parameter, void* test = nullptr) const {
+	const hresult createLink(const path link, const wstring_view parameter, void* const test = nullptr) const {
 		wstring_view operation;
 		try {
 			assertPermission(test);
@@ -63,7 +69,7 @@ protected:
 		catch (const hresult_error e) {
 			const auto code = e.code();
 			if (uint16_t(code) != ERROR_ACCESS_DENIED) {
-				MessageBoxW(nullptr, e.message().c_str(), L"Error", MB_ICONERROR);
+				MessageBoxW(nullptr, e.message().c_str(), LOC(L"Command.Error"), MB_ICONERROR);
 				return code;
 			}
 			operation = L"runas";
@@ -91,14 +97,14 @@ private:
 	const wstring_view executable;
 	const wstring_view extension;
 
-	void assertPermission(void* file) const {
+	static void assertPermission(void* const file) {
 		if (file == INVALID_HANDLE_VALUE) throw_last_error();
 		CloseHandle(file);
 	}
 };
 
 struct AbsoluteSymbolicLink : Command {
-	AbsoluteSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-51380", L"Symbolic link (Absolute)", L"No restrictions") {}
+	AbsoluteSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-51380", LOC(L"AbsoluteSymbolicLink.GetTitle"), LOC(L"AbsoluteSymbolicLink.GetToolTip")) {}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
 		(void)psiItemArray;
@@ -115,7 +121,7 @@ struct AbsoluteSymbolicLink : Command {
 };
 
 struct RelativeSymbolicLink : Command {
-	RelativeSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-16801", L"Symbolic link (Relative)", L"Same volume only") {}
+	RelativeSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-16801", LOC(L"RelativeSymbolicLink.GetTitle"), LOC(L"RelativeSymbolicLink.GetToolTip")) {}
 
 	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		(void)psiItemArray;
@@ -145,7 +151,7 @@ struct RelativeSymbolicLink : Command {
 };
 
 struct HardLink : Command {
-	HardLink(path directory, path target) : Command(directory, target, L"shell32.dll,-1", L"Hard link", L"Files and same volume only") {}
+	HardLink(path directory, path target) : Command(directory, target, L"shell32.dll,-1", LOC(L"HardLink.GetTitle"), LOC(L"HardLink.GetToolTip")) {}
 
 	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		(void)psiItemArray;
@@ -170,7 +176,7 @@ struct HardLink : Command {
 };
 
 struct DirectoryJunction : Command {
-	DirectoryJunction(path directory, path target) : Command(directory, target, L"shell32.dll,-4", L"Directory Junction", L"Directories and same computer only") {}
+	DirectoryJunction(path directory, path target) : Command(directory, target, L"shell32.dll,-4", LOC(L"DirectoryJunction.GetTitle"), LOC(L"DirectoryJunction.GetToolTip")) {}
 
 	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		(void)psiItemArray;
@@ -195,7 +201,7 @@ struct DirectoryJunction : Command {
 };
 
 struct InternetShortcut : Command {
-	InternetShortcut(path directory, path target) : Command(directory, target, L"shell32.dll,-14", L"Shortcut (.url)", L"Internet Shortcut", L"powershell", L".url") {}
+	InternetShortcut(path directory, path target) : Command(directory, target, L"shell32.dll,-14", LOC(L"InternetShortcut.GetTitle"), LOC(L"InternetShortcut.GetToolTip"), L"powershell", L".url") {}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
 		(void)psiItemArray;
@@ -212,7 +218,7 @@ struct InternetShortcut : Command {
 };
 
 struct ShellLink : Command {
-	ShellLink(path directory, path target) : Command(directory, target, L"shell32.dll,-25", L"Shortcut (.lnk)", L"Shell link", L"powershell", L".lnk") {}
+	ShellLink(path directory, path target) : Command(directory, target, L"shell32.dll,-25", LOC(L"ShellLink.GetTitle"), LOC(L"ShellLink.GetToolTip"), L"powershell", L".lnk") {}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
 		(void)psiItemArray;
@@ -343,12 +349,12 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 
 	HRESULT GetTitle(IShellItemArray* psiItemArray, LPWSTR* ppszName) {
 		(void)psiItemArray;
-		return SHStrDupW(L"Create link", ppszName);
+		return SHStrDupW(LOC(L"Mklink.GetTitle"), ppszName);
 	}
 
 	HRESULT GetToolTip(IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
 		(void)psiItemArray;
-		return SHStrDupW(L"Create a link to copied directory or file", ppszInfotip);
+		return SHStrDupW(LOC(L"Mklink.GetToolTip"), ppszInfotip);
 	}
 
 	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
