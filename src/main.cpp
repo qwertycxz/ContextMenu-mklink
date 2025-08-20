@@ -4,6 +4,7 @@ using std::filesystem::exists, std::filesystem::is_directory, std::filesystem::p
 
 static const auto resource = ResourceLoader::GetForViewIndependentUse();
 
+[[nodiscard("Pure function")]]
 static const wchar_t* LOC(wstring_view key) {
 	return resource.GetString(key).c_str();
 }
@@ -18,13 +19,11 @@ struct Command : implements<Command, IExplorerCommand> {
 		executable(executable),
 		extension(extension) {}
 
-	HRESULT EnumSubCommands(IEnumExplorerCommand** ppEnum) {
-		(void)ppEnum;
+	HRESULT EnumSubCommands([[maybe_unused]] IEnumExplorerCommand** ppEnum) {
 		return E_NOTIMPL;
 	}
 
-	HRESULT GetCanonicalName(GUID* pguidCommandName) {
-		(void)pguidCommandName;
+	HRESULT GetCanonicalName([[maybe_unused]] GUID* pguidCommandName) {
 		return E_NOTIMPL;
 	}
 
@@ -33,26 +32,20 @@ struct Command : implements<Command, IExplorerCommand> {
 		return S_OK;
 	}
 
-	HRESULT GetIcon(IShellItemArray* psiItemArray, LPWSTR* ppszIcon) {
-		(void)psiItemArray;
+	HRESULT GetIcon([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszIcon) {
 		return SHStrDupW(icon.data(), ppszIcon);
 	}
 
-	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
-		(void)psiItemArray;
-		(void)fOkToBeSlow;
-
+	HRESULT GetState([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		*pCmdState = ECS_ENABLED;
 		return S_OK;
 	}
 
-	HRESULT GetTitle(IShellItemArray* psiItemArray, LPWSTR* ppszName) {
-		(void)psiItemArray;
+	HRESULT GetTitle([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszName) {
 		return SHStrDupW(title.data(), ppszName);
 	}
 
-	HRESULT GetToolTip(IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
-		(void)psiItemArray;
+	HRESULT GetToolTip([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
 		return SHStrDupW(tip.data(), ppszInfotip);
 	}
 
@@ -60,6 +53,7 @@ protected:
 	const path directory;
 	const path target;
 
+	[[nodiscard("Please handle error")]]
 	const hresult createLink(const path link, const wstring_view parameter, void* const test = nullptr) const {
 		wstring_view operation;
 		try {
@@ -68,7 +62,7 @@ protected:
 		}
 		catch (const hresult_error e) {
 			const auto code = e.code();
-			if (uint16_t(code) != ERROR_ACCESS_DENIED) {
+			if (uint16_t(code) != ERROR_ACCESS_DENIED) [[unlikely]] {
 				MessageBoxW(nullptr, e.message().c_str(), LOC(L"Command.Error"), MB_ICONERROR);
 				return code;
 			}
@@ -79,6 +73,7 @@ protected:
 		return S_OK;
 	}
 
+	[[nodiscard("Pure function")]]
 	const path getLink() const {
 		const auto directory_string = directory.wstring();
 		path link = format(L"{}/{}{}", directory_string, target.filename().wstring(), extension);
@@ -106,10 +101,7 @@ private:
 struct AbsoluteSymbolicLink : Command {
 	AbsoluteSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-51380", LOC(L"AbsoluteSymbolicLink.GetTitle"), LOC(L"AbsoluteSymbolicLink.GetToolTip")) {}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		wstring_view argument;
 		if (is_directory(target)) {
 			argument = L"/D";
@@ -123,10 +115,7 @@ struct AbsoluteSymbolicLink : Command {
 struct RelativeSymbolicLink : Command {
 	RelativeSymbolicLink(path directory, path target) : Command(directory, target, L"shell32.dll,-16801", LOC(L"RelativeSymbolicLink.GetTitle"), LOC(L"RelativeSymbolicLink.GetToolTip")) {}
 
-	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
-		(void)psiItemArray;
-		(void)fOkToBeSlow;
-
+	HRESULT GetState([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		if (directory.root_path() == target.root_path()) {
 			*pCmdState = ECS_ENABLED;
 		}
@@ -136,10 +125,7 @@ struct RelativeSymbolicLink : Command {
 		return S_OK;
 	}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		wstring_view argument;
 		if (is_directory(target)) {
 			argument = L"/D";
@@ -153,10 +139,7 @@ struct RelativeSymbolicLink : Command {
 struct HardLink : Command {
 	HardLink(path directory, path target) : Command(directory, target, L"shell32.dll,-1", LOC(L"HardLink.GetTitle"), LOC(L"HardLink.GetToolTip")) {}
 
-	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
-		(void)psiItemArray;
-		(void)fOkToBeSlow;
-
+	HRESULT GetState([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		if (!is_directory(target) && directory.root_path() == target.root_path()) {
 			*pCmdState = ECS_ENABLED;
 		}
@@ -166,10 +149,7 @@ struct HardLink : Command {
 		return S_OK;
 	}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		const auto link = getLink();
 		return createLink(link, format(L"/C mklink /H \"{}\" \"{}\"", link.wstring(), target.wstring()), CreateFileW(target.c_str(), FILE_WRITE_DATA, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
 	}
@@ -178,10 +158,7 @@ struct HardLink : Command {
 struct DirectoryJunction : Command {
 	DirectoryJunction(path directory, path target) : Command(directory, target, L"shell32.dll,-4", LOC(L"DirectoryJunction.GetTitle"), LOC(L"DirectoryJunction.GetToolTip")) {}
 
-	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
-		(void)psiItemArray;
-		(void)fOkToBeSlow;
-
+	HRESULT GetState([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
 		if (is_directory(target)) {
 			*pCmdState = ECS_ENABLED;
 		}
@@ -191,10 +168,7 @@ struct DirectoryJunction : Command {
 		return S_OK;
 	}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		const auto link = getLink();
 		return createLink(link, format(L"/C mklink /J \"{}\" \"{}\"", link.wstring(), target.wstring()));
 	}
@@ -203,10 +177,7 @@ struct DirectoryJunction : Command {
 struct InternetShortcut : Command {
 	InternetShortcut(path directory, path target) : Command(directory, target, L"shell32.dll,-14", LOC(L"InternetShortcut.GetTitle"), LOC(L"InternetShortcut.GetToolTip"), L"powershell", L".url") {}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		const auto link = getLink();
 		// clang-format off
 		return createLink(link, format(L"-Command New-Item '{}' -Value '\
@@ -220,10 +191,7 @@ struct InternetShortcut : Command {
 struct ShellLink : Command {
 	ShellLink(path directory, path target) : Command(directory, target, L"shell32.dll,-25", LOC(L"ShellLink.GetTitle"), LOC(L"ShellLink.GetToolTip"), L"powershell", L".lnk") {}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
-
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		const auto link = getLink();
 		// clang-format off
 		return createLink(link, format(L"-Command                                  \
@@ -277,7 +245,7 @@ struct Enum : implements<Enum, IEnumExplorerCommand> {
 		}
 		command += fetched;
 
-		if (pceltFetched != nullptr) {
+		if (pceltFetched != nullptr) [[unlikely]] {
 			*pceltFetched = fetched;
 		}
 		return result;
@@ -304,8 +272,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 		return make<Enum>(directory, target)->QueryInterface(ppEnum);
 	}
 
-	HRESULT GetCanonicalName(GUID* pguidCommandName) {
-		(void)pguidCommandName;
+	HRESULT GetCanonicalName([[maybe_unused]] GUID* pguidCommandName) {
 		return E_NOTIMPL;
 	}
 
@@ -314,8 +281,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 		return S_OK;
 	}
 
-	HRESULT GetIcon(IShellItemArray* psiItemArray, LPWSTR* ppszIcon) {
-		(void)psiItemArray;
+	HRESULT GetIcon([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszIcon) {
 		return SHStrDupW(L"shell32.dll,-16769", ppszIcon);
 	}
 
@@ -323,17 +289,14 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 		return provider->QueryInterface(riid, ppvSite);
 	}
 
-	HRESULT GetState(IShellItemArray* psiItemArray, BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
-		(void)psiItemArray;
-		(void)fOkToBeSlow;
-
-		if (directory.empty() || !OpenClipboard(nullptr)) {
+	HRESULT GetState([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] BOOL fOkToBeSlow, EXPCMDSTATE* pCmdState) {
+		if (directory.empty() || !OpenClipboard(nullptr)) [[unlikely]] {
 			*pCmdState = ECS_DISABLED;
 			return S_OK;
 		}
 
 		auto data = HDROP(GetClipboardData(CF_HDROP));
-		if (DragQueryFileW(data, 0xFFFFFFFF, nullptr, 0) == 1) {
+		if (DragQueryFileW(data, 0xFFFFFFFF, nullptr, 0) == 1) [[unlikely]] {
 			*pCmdState = ECS_ENABLED;
 			wstring target_string(32767, 0);
 			DragQueryFileW(data, 0, target_string.data(), 32767);
@@ -347,30 +310,26 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 		return S_OK;
 	}
 
-	HRESULT GetTitle(IShellItemArray* psiItemArray, LPWSTR* ppszName) {
-		(void)psiItemArray;
+	HRESULT GetTitle([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszName) {
 		return SHStrDupW(LOC(L"Mklink.GetTitle"), ppszName);
 	}
 
-	HRESULT GetToolTip(IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
-		(void)psiItemArray;
+	HRESULT GetToolTip([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
 		return SHStrDupW(LOC(L"Mklink.GetToolTip"), ppszInfotip);
 	}
 
-	HRESULT Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) {
-		(void)psiItemArray;
-		(void)pbc;
+	HRESULT Invoke([[maybe_unused]] IShellItemArray* psiItemArray, [[maybe_unused]] IBindCtx* pbc) {
 		return E_NOTIMPL;
 	}
 
 	HRESULT SetSite(IUnknown* pUnkSite) {
-		if (pUnkSite == nullptr) {
+		if (pUnkSite == nullptr) [[unlikely]] {
 			directory.clear();
 			provider = nullptr;
 			return S_OK;
 		}
 
-		PIDLIST_ABSOLUTE list = nullptr;
+		ITEMIDLIST* list = nullptr;
 		try {
 			check_hresult(pUnkSite->QueryInterface(provider.put()));
 			com_ptr<IShellBrowser> browser;
@@ -399,8 +358,7 @@ private:
 };
 
 struct Factory : implements<Factory, IClassFactory> {
-	HRESULT CreateInstance(IUnknown* pUnkOuter, REFIID riid, void** ppvObject) {
-		(void)pUnkOuter;
+	HRESULT CreateInstance([[maybe_unused]] IUnknown* pUnkOuter, REFIID riid, void** ppvObject) {
 		return make<Mklink>()->QueryInterface(riid, ppvObject);
 	}
 
@@ -420,7 +378,6 @@ STDAPI DllCanUnloadNow() {
 	return S_OK;
 }
 
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv) {
-	(void)rclsid;
+STDAPI DllGetClassObject([[maybe_unused]] REFCLSID rclsid, REFIID riid, LPVOID* ppv) {
 	return make<Factory>()->QueryInterface(riid, ppv);
 }
