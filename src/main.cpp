@@ -32,7 +32,7 @@ struct Command : implements<Command, IExplorerCommand> {
 	 * @param icon The icon to use for the link
 	 * @param title The title of the link
 	 * @param tip The tooltip for the link
-	 * @param executable The executable to use for the link
+	 * @param executable The executable of the command
 	 * @param extension The extension of the link file
 	 */
 	Command(path directory, path target, wstring_view icon, wstring_view title, wstring_view tip, wstring_view executable = L"cmd", wstring_view extension = L"") :
@@ -45,7 +45,7 @@ struct Command : implements<Command, IExplorerCommand> {
 		extension(extension) {}
 
 	/**
-	 * Enumerate sub-commands. Basic commands has no sub-commands.
+	 * Enumerate sub-commands. Basic commands have no sub-commands.
 	 * @param ppEnum Unused output
 	 * @return `E_NOTIMPL`
 	 */
@@ -181,15 +181,15 @@ private:
 	 */
 	const wstring_view icon;
 	/**
-	 * The title of command
+	 * The title of the command
 	 */
 	const wstring_view title;
 	/**
-	 * The tooltip of command. Seems unused.
+	 * The tooltip of the command. Seems unused.
 	 */
 	const wstring_view tip;
 	/**
-	 * The executable of command. Default is `cmd`.
+	 * The executable of the command. Default is `cmd`.
 	 */
 	const wstring_view executable;
 	/**
@@ -203,7 +203,7 @@ private:
 	 * Assert the permission of the file.
 	 *
 	 * If the file is `INVALID_HANDLE_VALUE`, throw an error.
-	 * @param file The file handle to check, Should be the return value of `CreateFile`
+	 * @param file The file handle to check. Should be the return value of `CreateFile`
 	 */
 	static void assertPermission(void* const file) {
 		if (file == INVALID_HANDLE_VALUE) throw_last_error();
@@ -574,7 +574,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 	}
 
 	/**
-	 * Get the site set lately.
+	 * Get the previously set site.
 	 * @param riid Requested interface ID
 	 * @param ppvSite Output pointer to the interface
 	 * @return `S_OK` on success, most likely
@@ -586,7 +586,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 	/**
 	 * Get if the command is enabled.
 	 *
-	 * @param psiItemArray Unused input. `explorer.exe` always called `GetState` with null-`psiItemArray`
+	 * @param psiItemArray Unused input. `explorer.exe` always calls `GetState` with null-`psiItemArray`
 	 * @param fOkToBeSlow Unused input. We are not slow
 	 * @param pCmdState Output `ECS_ENABLED` if user copied single file or directory, `ECS_DISABLED` otherwise
 	 * @return `S_OK`
