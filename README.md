@@ -1,4 +1,4 @@
-# ContextMenu-mklink
+# Context Menu mklink
 
 Create symbolic link, hard link (and more!) in context menu. Windows 11 context menu supported.
 
@@ -13,8 +13,8 @@ This software is still in the early development stage.
 ## Install
 
 1. Enable [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/developer-mode-features-and-debugging) in Windows Settings
-2. Download the latest .zip from [Releases](https://github.com/qwertycxz/ContextMenu-mklink/releases)
-3. Extract the .zip file to a folder of your choice
+2. Download the latest .7z from [Releases](https://github.com/qwertycxz/ContextMenu-mklink/releases)
+3. Extract the .7z file to a folder of your choice
 4. Start PowerShell and navigate to the extracted folder
 5. Run `Add-AppxPackage AppxManifest.xml -Register`
 6. If the context menu item isn't showing up, try restarting Windows Explorer.
