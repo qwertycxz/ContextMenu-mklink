@@ -1,13 +1,23 @@
 add_configfiles'src/AppxManifest.xml'
 add_files('i18n/**.resw', 'src/**.cpp', 'src/**.svg')
+add_imports('core.tool.linker', 'lib.detect.has_flags')
 add_includedirs'C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/cppwinrt'
 add_rules('logo', 'mode.release', 'resource')
-add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++', '-lpthread', '-Wl,-Bdynamic')
+add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
 on_load(function(target)
+	local function addFlag(flag)
+		if has_flags('gxx', flag, {
+			toolkind = 'sh',
+		}) then
+			target:add('shflags', flag)
+		end
+	end
+	addFlag('-lmcfgthread')
+	addFlag('-lpthread')
 	local resource = ''
-	for i, v in ipairs(os.files('i18n/**.resw')) do
+	for i, v in ipairs(os.files'i18n/**.resw') do
 		local language = v:match'language%-(.+)%.resw$'
 		if language then
 			resource = resource .. '\n\t\t<Resource Language="' .. language .. '"/>'
