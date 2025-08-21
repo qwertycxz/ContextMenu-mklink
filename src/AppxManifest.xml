@@ -47,8 +47,8 @@
 			<Extensions>
 				<com:Extension Category='windows.comServer'>
 					<com:ComServer>
-						<com:SurrogateServer>
-							<com:Class Id='${Class}' Path='${arch}.dll' ThreadingModel='Both' />
+						<com:SurrogateServer DisplayName='ms-resource:Manifest.DisplayName'>
+							<com:Class DisplayName='ms-resource:Manifest.DisplayName' Id='${Class}' Path='${arch}.dll' ThreadingModel='Both' />
 						</com:SurrogateServer>
 					</com:ComServer>
 				</com:Extension>
@@ -63,8 +63,8 @@
 			<uap:VisualElements
 				AppListEntry='none'
 				BackgroundColor='transparent'
-				DisplayName='${Display}'
-				Description='Create symbolic link and hard link in context menu. (Windows 11 context menu supported)'
+				Description='ms-resource:Manifest.Description'
+				DisplayName='ms-resource:Manifest.DisplayName'
 				Square150x150Logo='${Logo}'
 				Square44x44Logo='${Logo}'
 			/>
@@ -76,10 +76,11 @@
 	<Dependencies>
 		<TargetDeviceFamily MaxVersionTested='10.0.26100.0' MinVersion='10.0.0.0' Name='Windows.Universal' />
 	</Dependencies>
-	<Identity Name='${Name}' ProcessorArchitecture='${arch}' Publisher='CN=${Publisher}' Version='${VERSION}' />
+	<Identity Name='${Name}' ProcessorArchitecture='${arch}' Publisher='CN=qwerty吃小庄' Version='${VERSION}' />
 	<Properties>
-		<DisplayName>${Display}</DisplayName>
-		<PublisherDisplayName>${Publisher}</PublisherDisplayName>
+		<Description>ms-resource:Manifest.Description</Description>
+		<DisplayName>ms-resource:Manifest.DisplayName</DisplayName>
+		<PublisherDisplayName>ms-resource:Manifest.PublisherDisplayName</PublisherDisplayName>
 		<Logo>${Logo}</Logo>
 	</Properties>
 	<Resources>${Resource}</Resources>

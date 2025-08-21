@@ -44,4 +44,13 @@
 	<data name='Command.Error' xml:space='preserve'>
 		<value>Error</value>
 	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>Create symbolic link and hard link in context menu. (Windows 11 context menu supported)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>Context Menu mklink</value>
+	</data>
+	<data name='Manifest.PublisherDisplayName' xml:space='preserve'>
+		<value>qwertycxz</value>
+	</data>
 </root>

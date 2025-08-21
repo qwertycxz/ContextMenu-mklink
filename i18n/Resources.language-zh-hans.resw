@@ -44,4 +44,13 @@
 	<data name='Command.Error' xml:space='preserve'>
 		<value>错误</value>
 	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>在右键菜单创建符号链接和硬链接。（支持 Windows 11 新右键菜单）</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>右键菜单 mklink</value>
+	</data>
+	<data name='Manifest.PublisherDisplayName' xml:space='preserve'>
+		<value>qwerty吃小庄</value>
+	</data>
 </root>
