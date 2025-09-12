@@ -21,6 +21,12 @@ This software is still in the early development stage.
 
 To uninstall, please head to Windows Settings.
 
+## Usage
+
+1. Copy any files or folders in explorer.
+2. Right-click in the directory background. You can see a *Create Link* menu.
+3. Choose the link type you want to create. And here you go! A link is successfully created!
+
 ## Contributor
 
 [@qwertycxz](https://github.com/qwertycxz)
