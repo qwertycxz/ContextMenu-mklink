@@ -85,6 +85,8 @@ end)
 rule'resource'
 set_extensions'.resw'
 on_buildcmd_files(function (target, batchcmds, sourcebatch, opt)
+	local targetdir = target:targetdir()
+	os.mkdir(targetdir)
 	local sourcedir = path.directory(sourcebatch.sourcefiles[1])
 	local targetfile = target:targetdir() .. '/resources.pri'
 	batchcmds:add_depfiles('src/pri.xml', sourcebatch.sourcefiles)
