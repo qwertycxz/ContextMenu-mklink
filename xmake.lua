@@ -6,6 +6,13 @@ add_rules('logo', 'mode.release', 'resource')
 add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
+on_config(function (target)
+	if target:policy'build.ccache' == false then
+		target:add('warnings', 'error')
+	else
+		target:set('pcxxheader', 'src/pch.hpp')
+	end
+end)
 on_load(function(target)
 	local function addFlag(flag)
 		if has_flags('gxx', flag, {
@@ -39,7 +46,6 @@ set_exceptions'cxx'
 set_fpmodels'strict'
 set_kind'shared'
 set_languages'cxxlatest'
-set_pcxxheader'src/pch.hpp'
 set_project'ContextMenu-mklink'
 set_toolchains'mingw'
 set_warnings('everything', 'pedantic')
