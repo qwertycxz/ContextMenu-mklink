@@ -3,12 +3,19 @@ jobs:
   check:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: winget add --accept-package-agreements --accept-source-agreements LLVM.LLVM Xmake-io.Xmake
+      - uses: actions/checkout
+      - uses: xmake-io/github-action-setup-xmake
+        with:
+          actions-cache-folder: .xmake
+      - uses: ZhongRuoyu/setup-llvm
+        with:
+          llvm-version: 21
       - run: xmake format:check
-      - run: winget add --accept-package-agreements --accept-source-agreements BrechtSanders.WinLibs.POSIX.UCRT feraxhp.cim Microsoft.WindowsSDK.10.0.26100
+      - run: winget add --accept-package-agreements --accept-source-agreements feraxhp.cim Microsoft.WindowsSDK.10.0.26100
+      - uses: bwoodsend/setup-winlibs-action
+        with:
+          tag: 15.2.0posix-13.0.0-ucrt-r5
       - run: xmake check syntax
-name: Check
 on:
   pull_request:
     branches: [master]
