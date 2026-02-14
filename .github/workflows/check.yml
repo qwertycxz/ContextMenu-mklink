@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://schemastore.org/github-workflow
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: winget add LLVM.LLVM Xmake-io.Xmake
+      - run: xmake format:check
+      - run: winget add BrechtSanders.WinLibs.POSIX.UCRT feraxhp.cim Microsoft.WindowsSDK.10.0.26100
+      - run: xmake check syntax
+name: Check
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
