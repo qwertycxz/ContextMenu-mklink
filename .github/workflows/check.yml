@@ -3,16 +3,16 @@ jobs:
   check:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout
-      - uses: xmake-io/github-action-setup-xmake
+      - uses: actions/checkout@latest
+      - uses: xmake-io/github-action-setup-xmake@latest
         with:
           actions-cache-folder: .xmake
-      - uses: ZhongRuoyu/setup-llvm
+      - uses: ZhongRuoyu/setup-llvm@latest
         with:
           llvm-version: 21
       - run: xmake format:check
       - run: winget add --accept-package-agreements --accept-source-agreements feraxhp.cim Microsoft.WindowsSDK.10.0.26100
-      - uses: bwoodsend/setup-winlibs-action
+      - uses: bwoodsend/setup-winlibs-action@latest
         with:
           tag: 15.2.0posix-13.0.0-ucrt-r5
       - run: xmake check syntax
