@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@main
       - uses: xmake-io/github-action-setup-xmake@master
         with:
-          actions-cache-folder: ../.xmake
+          actions-cache-folder: ~/xmake
       - uses: ZhongRuoyu/setup-llvm@main
         with:
           llvm-version: 21
