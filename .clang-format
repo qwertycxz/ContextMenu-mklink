@@ -12,14 +12,6 @@ AlwaysBreakBeforeMultilineStrings: true
 BasedOnStyle: Mozilla
 BinPackArguments: false
 BinPackLongBracedList: false
-BreakAdjacentStringLiterals: false
-BreakAfterReturnType: Automatic
-BreakBeforeBraces: Custom
-BreakBeforeTemplateCloser: true
-BreakBeforeTernaryOperators: false
-BreakBinaryOperations: RespectPrecedence
-BreakConstructorInitializers: AfterColon
-BreakInheritanceList: AfterColon
 BraceWrapping:
   AfterCaseLabel: false
   AfterClass: false
@@ -39,6 +31,14 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyNamespace: false
   SplitEmptyRecord: false
+BreakAdjacentStringLiterals: false
+BreakAfterReturnType: Automatic
+BreakBeforeBraces: Custom
+BreakBeforeTemplateCloser: true
+BreakBeforeTernaryOperators: false
+BreakBinaryOperations: RespectPrecedence
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
 BreakStringLiterals: false
 ColumnLimit: 255
 ConstructorInitializerIndentWidth: 4
