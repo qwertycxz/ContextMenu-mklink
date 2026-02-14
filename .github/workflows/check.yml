@@ -3,6 +3,7 @@ jobs:
   check:
     runs-on: windows-latest
     steps:
+      - run: git config --global core.autocrlf false
       - uses: actions/checkout@main
       - uses: xmake-io/github-action-setup-xmake@master
         with:
