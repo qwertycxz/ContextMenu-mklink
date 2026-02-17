@@ -4,7 +4,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: '$env:PATH'
-      - run: gcc -v
+      - run: clang-format --version
+      - run: ls 'C:\Program Files (x86)\Windows Kits\10\Include'
 on:
   push:
     branches: [test-cicd]
