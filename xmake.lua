@@ -61,7 +61,7 @@ end
 
 task'format'
 on_run(function()
-	os.vrunv('clang-format -i --Wno-error=unknown', format())
+	os.execv('clang-format -i --Wno-error=unknown', format())
 end)
 set_menu{
 	description = 'Format source code.',
