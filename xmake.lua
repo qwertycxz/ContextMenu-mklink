@@ -23,6 +23,14 @@ on_load(function(target)
 	end
 	addFlag('-lmcfgthread')
 	addFlag('-lpthread')
+	target:set('configdir', target:targetdir())
+	try{function()
+		local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
+		if commit == '' then
+			commit = '0'
+		end
+		target:set('version', version .. '.' .. commit)
+	end}
 	local resource = ''
 	for i, v in ipairs(os.files'i18n/**.resw') do
 		local language = v:match'language%-(.+)%.resw$'
@@ -31,12 +39,6 @@ on_load(function(target)
 		end
 	end
 	target:get'configvar'.Resource = resource .. '\n\t'
-	local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
-	if commit == '' then
-		commit = '0'
-	end
-	target:set('version', version .. '.' .. commit)
-	target:set('configdir', target:targetdir())
 end)
 set_configvar('Class', 'AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E')
 set_configvar('Logo', 'Logo.png')
