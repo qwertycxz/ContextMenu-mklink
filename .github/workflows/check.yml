@@ -3,20 +3,8 @@ jobs:
   check:
     runs-on: windows-latest
     steps:
-      - run: git config --global core.autocrlf false
-      - uses: actions/checkout@main
-      - uses: xmake-io/github-action-setup-xmake@master
-        with:
-          actions-cache-folder: ${{ runner.temp }}/xmake
-      - uses: KyleMayes/install-llvm-action@master
-        with:
-          cached: true
-          version: 21
-      - run: xmake format:check
-      - run: winget add --accept-package-agreements --accept-source-agreements BrechtSanders.WinLibs.POSIX.UCRT feraxhp.cim Microsoft.WindowsSDK.10.0.26100
-      - run: xmake check syntax
+      - run: '$env:PATH'
+      - run: gcc -v
 on:
-  pull_request:
-    branches: [master]
   push:
-    branches: [master]
+    branches: [test-cicd]
