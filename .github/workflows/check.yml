@@ -8,14 +8,12 @@ jobs:
       - uses: xmake-io/github-action-setup-xmake@master
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
-      - uses: ZhongRuoyu/setup-llvm@main
+      - uses: KyleMayes/install-llvm-action@master
         with:
-          llvm-version: 21
+          cached: true
+          version: 21
       - run: xmake format:check
-      - run: winget add --accept-package-agreements --accept-source-agreements feraxhp.cim Microsoft.WindowsSDK.10.0.26100
-      - uses: bwoodsend/setup-winlibs-action@v1
-        with:
-          tag: 15.2.0posix-13.0.0-ucrt-r5
+      - run: winget add --accept-package-agreements --accept-source-agreements BrechtSanders.WinLibs.POSIX.UCRT feraxhp.cim Microsoft.WindowsSDK.10.0.26100
       - run: xmake check syntax
 on:
   pull_request:
