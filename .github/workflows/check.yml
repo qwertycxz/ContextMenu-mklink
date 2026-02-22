@@ -8,12 +8,8 @@ jobs:
       - uses: xmake-io/github-action-setup-xmake@master
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
-      - uses: KyleMayes/install-llvm-action@master
-        with:
-          cached: true
-          version: 21
       - run: xmake format:check
-      - run: winget add --accept-package-agreements --accept-source-agreements BrechtSanders.WinLibs.POSIX.UCRT feraxhp.cim Microsoft.WindowsSDK.10.0.26100
+      - uses: qwertycxz/setup-cim@master
       - run: xmake check syntax
 on:
   pull_request:
