@@ -5,11 +5,11 @@ jobs:
     steps:
       - run: git config --global core.autocrlf false
       - uses: actions/checkout@main
-      - uses: xmake-io/github-action-setup-xmake@master
+      - uses: xmake-io/github-action-setup-xmake@cc0f56c35b75d0975ed5d9e29005fae707721cd5
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
       - run: xmake format:check
-      - uses: qwertycxz/setup-cim@master
+      - uses: qwertycxz/setup-cim@b92f3990ce84304dc42937384b24c9fe739e665a
       - run: xmake check syntax
 on:
   pull_request:
