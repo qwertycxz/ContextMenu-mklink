@@ -13,7 +13,7 @@ on_config(function (target)
 		target:set('pcxxheader', 'src/pch.hpp')
 	end
 end)
-on_load(function(target)
+on_load(function (target)
 	local function addFlag(flag)
 		if has_flags('gxx', flag, {
 			toolkind = 'sh',
@@ -24,7 +24,7 @@ on_load(function(target)
 	addFlag('-lmcfgthread')
 	addFlag('-lpthread')
 	target:set('configdir', target:targetdir())
-	try{function()
+	try{function ()
 		local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
 		if commit == '' then
 			commit = '0'
@@ -43,6 +43,7 @@ end)
 set_configvar('Class', 'AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E')
 set_configvar('Logo', 'Logo.png')
 set_configvar('Name', 'ContextMenu.mklink')
+set_configvar('Publisher', 'qwerty吃小庄')
 set_encodings'utf-8'
 set_exceptions'cxx'
 set_fpmodels'strict'
@@ -52,7 +53,7 @@ set_project'ContextMenu-mklink'
 set_toolchains'mingw'
 set_warnings('everything', 'pedantic')
 
-after_clean(function(target)
+after_clean(function (target)
 	os.rm(target:targetdir())
 end)
 
@@ -62,7 +63,7 @@ local function format()
 end
 
 task'format'
-on_run(function()
+on_run(function ()
 	os.execv('clang-format -i --Wno-error=unknown', format())
 end)
 set_menu{
@@ -70,7 +71,7 @@ set_menu{
 }
 
 task'format:check'
-on_run(function()
+on_run(function ()
 	os.execv('clang-format -n -Werror --Wno-error=unknown', format())
 end)
 set_menu{
@@ -111,3 +112,20 @@ on_buildcmd_files(function (target, batchcmds, sourcebatch, opt)
 		sourcedir,
 	})
 end)
+
+includes'@builtin/xpack'
+xpack'msix'
+add_targets'x64'
+on_package(function (package)
+	for i, v in ipairs(package:targets()) do
+		os.vrunv('C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/makeappx', {
+			'pack',
+			'-d',
+			v:targetdir(),
+			'-o',
+			'-p',
+			package:outputdir() .. '/' .. v:name() .. '.msix',
+		})
+	end
+end)
+set_formats'msix'

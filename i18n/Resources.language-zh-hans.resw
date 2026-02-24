@@ -50,7 +50,4 @@
 	<data name='Manifest.DisplayName' xml:space='preserve'>
 		<value>右键菜单 mklink</value>
 	</data>
-	<data name='Manifest.PublisherDisplayName' xml:space='preserve'>
-		<value>qwerty吃小庄</value>
-	</data>
 </root>

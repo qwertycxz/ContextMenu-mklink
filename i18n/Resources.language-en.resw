@@ -50,7 +50,4 @@
 	<data name='Manifest.DisplayName' xml:space='preserve'>
 		<value>Context Menu mklink</value>
 	</data>
-	<data name='Manifest.PublisherDisplayName' xml:space='preserve'>
-		<value>qwertycxz</value>
-	</data>
 </root>

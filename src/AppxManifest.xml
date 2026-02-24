@@ -74,13 +74,13 @@
 		<rescap:Capability Name='runFullTrust' />
 	</Capabilities>
 	<Dependencies>
-		<TargetDeviceFamily MaxVersionTested='10.0.26100.0' MinVersion='10.0.0.0' Name='Windows.Universal' />
+		<TargetDeviceFamily MaxVersionTested='10.0.26100.0' MinVersion='10.0.17135.0' Name='Windows.Universal' />
 	</Dependencies>
-	<Identity Name='${Name}' ProcessorArchitecture='${arch}' Publisher='CN=qwerty吃小庄' Version='${VERSION}' />
+	<Identity Name='${Name}' ProcessorArchitecture='${arch}' Publisher='CN=${Publisher}' Version='${VERSION}' />
 	<Properties>
 		<Description>ms-resource:Manifest.Description</Description>
 		<DisplayName>ms-resource:Manifest.DisplayName</DisplayName>
-		<PublisherDisplayName>ms-resource:Manifest.PublisherDisplayName</PublisherDisplayName>
+		<PublisherDisplayName>${Publisher}</PublisherDisplayName>
 		<Logo>${Logo}</Logo>
 	</Properties>
 	<Resources>${Resource}</Resources>
