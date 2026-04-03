@@ -42,8 +42,6 @@ on_load(function (target)
 end)
 set_configvar('Class', 'AB07ABB7-2731-CFF0-A89E-D7B1B7E31E9E')
 set_configvar('Logo', 'Logo.png')
-set_configvar('Name', 'ContextMenu.mklink')
-set_configvar('Publisher', 'qwerty吃小庄')
 set_encodings'utf-8'
 set_exceptions'cxx'
 set_fpmodels'strict'
