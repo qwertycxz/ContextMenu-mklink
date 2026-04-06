@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://schemastore.org/github-workflow
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: qwertycxz/setup-cim@b92f3990ce84304dc42937384b24c9fe739e665a
+      - uses: xmake-io/github-action-setup-xmake@cc0f56c35b75d0975ed5d9e29005fae707721cd5
+        with:
+          actions-cache-folder: ${{ runner.temp }}/xmake
+      - run: xmake pack
+      - uses: softprops/action-gh-release@v2
+        with:
+          append_body: true
+          discussion_category_name: Announcements
+          files: build/xpack/msix/*
+          generate_release_notes: true
+          make_latest: true
+on:
+  push:
+    tags:
+      - v*
+permissions:
+  contents: write
+  discussions: write

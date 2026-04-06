@@ -12,9 +12,7 @@ jobs:
       - uses: qwertycxz/setup-cim@b92f3990ce84304dc42937384b24c9fe739e665a
       - run: xmake check syntax
 on:
-  pull_request:
-    branches: [master]
-  push:
-    branches: [master]
+  - pull_request
+  - push
 permissions:
   contents: read
