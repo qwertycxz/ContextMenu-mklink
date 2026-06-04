@@ -6,14 +6,8 @@ add_rules('logo', 'mode.release', 'resource')
 add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
 add_vectorexts'all'
-on_config(function (target)
-	if target:policy'build.ccache' == false then
-		target:add('warnings', 'error')
-	else
-		target:set('pcxxheader', 'src/pch.hpp')
-	end
-end)
 on_load(function (target)
+	import'utils.checker'
 	local function addFlag(flag)
 		if has_flags('gxx', flag, {
 			toolkind = 'sh',
@@ -23,6 +17,11 @@ on_load(function (target)
 	end
 	addFlag('-lmcfgthread')
 	addFlag('-lpthread')
+	if checker.is_running'syntax' then
+		target:add('warnings', 'error')
+	else
+		target:set('pcxxheader', 'src/pch.hpp')
+	end
 	target:set('configdir', target:targetdir())
 	try{function ()
 		local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'

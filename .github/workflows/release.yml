@@ -4,12 +4,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@main
-      - uses: qwertycxz/setup-cim@b92f3990ce84304dc42937384b24c9fe739e665a
-      - uses: xmake-io/github-action-setup-xmake@cc0f56c35b75d0975ed5d9e29005fae707721cd5
+      - uses: qwertycxz/setup-cim@7c20746d99fe17535118b7d0edd6a75c0ab268a8
+      - uses: xmake-io/github-action-setup-xmake@3a1a5dddfc7fa625d9a698738334bf55655a861a
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
       - run: xmake pack
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda
         with:
           append_body: true
           discussion_category_name: Announcements
