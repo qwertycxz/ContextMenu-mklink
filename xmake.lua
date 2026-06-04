@@ -15,8 +15,8 @@ on_load(function (target)
 			target:add('shflags', flag)
 		end
 	end
-	addFlag('-lmcfgthread')
-	addFlag('-lpthread')
+	addFlag'-lmcfgthread'
+	addFlag'-lpthread'
 	if checker.is_running'syntax' then
 		target:add('warnings', 'error')
 	else
