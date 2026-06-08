@@ -1,7 +1,9 @@
+local WINDOWS = '10.0.26100.0'
+
 add_configfiles'src/AppxManifest.xml'
 add_files('i18n/**.resw', 'src/**.cpp', 'src/**.svg')
 add_imports('core.tool.linker', 'lib.detect.has_flags')
-add_includedirs'C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/cppwinrt'
+add_includedirs('C:/Program Files (x86)/Windows Kits/10/Include/' .. WINDOWS .. '/cppwinrt')
 add_rules('logo', 'mode.release', 'resource')
 add_shflags('-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++')
 add_syslinks('ole32', 'oleaut32', 'runtimeobject', 'shlwapi')
@@ -54,7 +56,7 @@ after_clean(function (target)
 	os.rm(target:targetdir())
 end)
 
-target'x64'
+target'release'
 local function format()
 	return table.join(os.files'src/**', os.files'**/*.json')
 end
@@ -98,7 +100,7 @@ on_buildcmd_files(function (target, batchcmds, sourcebatch, opt)
 	batchcmds:add_depfiles('src/pri.xml', sourcebatch.sourcefiles)
 	batchcmds:set_depmtime(os.mtime(targetfile))
 	batchcmds:show_progress(opt.progress, "${color.build.object}making %s", sourcedir)
-	batchcmds:vrunv('C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/makepri', {
+	batchcmds:vrunv('C:/Program Files (x86)/Windows Kits/10/bin/' .. WINDOWS .. '/' .. target:arch() .. '/makepri', {
 		'new',
 		'-cf',
 		'src/pri.xml',
@@ -112,10 +114,10 @@ end)
 
 includes'@builtin/xpack'
 xpack'msix'
-add_targets'x64'
+add_targets'release'
 on_package(function (package)
 	for i, v in ipairs(package:targets()) do
-		os.vrunv('C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/makeappx', {
+		os.vrunv('C:/Program Files (x86)/Windows Kits/10/bin/' .. WINDOWS .. '/' .. v:arch() .. '/makeappx', {
 			'pack',
 			'-d',
 			v:targetdir(),
