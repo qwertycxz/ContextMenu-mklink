@@ -117,13 +117,14 @@ xpack'msix'
 add_targets'release'
 on_package(function (package)
 	for i, v in ipairs(package:targets()) do
-		os.vrunv('C:/Program Files (x86)/Windows Kits/10/bin/' .. WINDOWS .. '/' .. v:arch() .. '/makeappx', {
+		local arch = v:arch()
+		os.vrunv('C:/Program Files (x86)/Windows Kits/10/bin/' .. WINDOWS .. '/' .. arch .. '/makeappx', {
 			'pack',
 			'-d',
 			v:targetdir(),
 			'-o',
 			'-p',
-			package:outputdir() .. '/' .. v:name() .. '.msix',
+			package:outputdir() .. '/' .. v:name() .. '-' .. arch .. '.msix',
 		})
 	end
 end)

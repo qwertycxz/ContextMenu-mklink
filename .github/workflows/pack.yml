@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://schemastore.org/github-workflow
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@main
+      - uses: qwertycxz/setup-cim@7c20746d99fe17535118b7d0edd6a75c0ab268a8
+      - uses: xmake-io/github-action-setup-xmake@3a1a5dddfc7fa625d9a698738334bf55655a861a
+        with:
+          actions-cache-folder: ${{ runner.temp }}/xmake
+      - run: xmake pack
+      - uses: actions/upload-artifact@main
+        with:
+          archive: false
+          path: build/xpack/msix/*
+    strategy:
+      matrix:
+        os:
+          - windows-11-arm
+          - windows-2025
+on:
+  - workflow_call
+  - workflow_dispatch
+permissions:
+  contents: read
