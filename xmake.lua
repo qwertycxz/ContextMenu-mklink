@@ -1,4 +1,4 @@
-local WINDOWS = '10.0.26100.0'
+local WINDOWS = '10.0.28000.0'
 
 add_configfiles'src/AppxManifest.xml'
 add_files('i18n/**.resw', 'src/**.cpp', 'src/**.svg')
