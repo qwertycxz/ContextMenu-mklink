@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>लिंक बनाएं</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>कॉपी की गई निर्देशिका या फ़ाइल का लिंक बनाएं</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>सिंबॉलिक लिंक (निरपेक्ष)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>कोई प्रतिबंध नहीं</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>सिंबॉलिक लिंक (सापेक्ष)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>केवल समान वॉल्यूम</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>हार्ड लिंक</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>केवल फ़ाइलें और समान वॉल्यूम</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>निर्देशिका जंक्शन</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>केवल निर्देशिकाएं और समान कंप्यूटर</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>शॉर्टकट (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>इंटरनेट शॉर्टकट</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>शॉर्टकट (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>शेल लिंक</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>त्रुटि</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>संदर्भ मेनू में सिंबॉलिक लिंक और हार्ड लिंक बनाता है। (Windows 11 संदर्भ मेनू समर्थित)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>संदर्भ मेनू mklink</value>
+	</data>
+</root>

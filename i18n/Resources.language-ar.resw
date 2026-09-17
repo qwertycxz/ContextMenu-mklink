@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>إنشاء ارتباط</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>إنشاء ارتباط إلى الدليل أو الملف المنسوخ</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>ارتباط رمزي (مطلق)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>بلا قيود</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>ارتباط رمزي (نسبي)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>وحدة التخزين نفسها فقط</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>ارتباط ثابت</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>الملفات ووحدة التخزين نفسها فقط</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>ربط الدليل</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>الأدلة والكمبيوتر نفسه فقط</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>اختصار (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>اختصار إنترنت</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>اختصار (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>ارتباط الشل</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>خطأ</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>إنشاء ارتباط رمزي وارتباط ثابت في قائمة السياق. (يدعم قائمة سياق Windows 11)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>قائمة السياق mklink</value>
+	</data>
+</root>

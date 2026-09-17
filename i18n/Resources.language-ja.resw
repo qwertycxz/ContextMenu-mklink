@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>リンクの作成</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>コピーしたディレクトリまたはファイルへのリンクを作成します</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>シンボリック リンク（絶対）</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>制限なし</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>シンボリック リンク（相対）</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>同じボリュームのみ</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>ハード リンク</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>ファイルおよび同じボリュームのみ</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>ディレクトリ ジャンクション</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>ディレクトリおよび同じコンピューターのみ</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>ショートカット (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>インターネット ショートカット</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>ショートカット (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>シェル リンク</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>エラー</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>コンテキスト メニューにシンボリック リンクとハード リンクを作成します。（Windows 11 のコンテキスト メニューに対応）</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>コンテキスト メニュー mklink</value>
+	</data>
+</root>

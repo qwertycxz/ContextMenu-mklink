@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>Créer un lien</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>Créer un lien vers le répertoire ou le fichier copié</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Lien symbolique (Absolu)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Aucune restriction</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Lien symbolique (Relatif)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Même volume uniquement</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>Lien physique</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>Fichiers et même volume uniquement</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>Jonction de répertoire</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>Répertoires et même ordinateur uniquement</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>Raccourci (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>Raccourci Internet</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>Raccourci (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Lien shell</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>Erreur</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>Crée un lien symbolique et un lien physique dans le menu contextuel. (Menu contextuel de Windows 11 pris en charge)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>Menu contextuel mklink</value>
+	</data>
+</root>

@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>Создать ссылку</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>Создать ссылку на скопированный каталог или файл</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Символическая ссылка (Абсолютная)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Без ограничений</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Символическая ссылка (Относительная)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Только тот же том</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>Жёсткая ссылка</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>Только файлы и тот же том</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>Соединение каталогов</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>Только каталоги и тот же компьютер</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>Ярлык (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>Ярлык интернета</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>Ярлык (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Ссылка оболочки</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>Ошибка</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>Создаёт символические и жёсткие ссылки в контекстном меню. (Поддерживается контекстное меню Windows 11)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>Контекстное меню mklink</value>
+	</data>
+</root>

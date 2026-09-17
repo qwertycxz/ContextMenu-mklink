@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>Bağlantı oluştur</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>Kopyalanan dizin veya dosyaya bağlantı oluştur</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Sembolik bağlantı (Mutlak)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Kısıtlama yok</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Sembolik bağlantı (Göreli)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Yalnızca aynı birim</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>Sabit bağlantı</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>Yalnızca dosyalar ve aynı birim</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>Dizin bağlantısı</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>Yalnızca dizinler ve aynı bilgisayar</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>Kısayol (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>İnternet Kısayolu</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>Kısayol (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Kabuk bağlantısı</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>Hata</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>Sağ tık menüsünde sembolik bağlantı ve sabit bağlantı oluşturur. (Windows 11 sağ tık menüsü desteklenir)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>Sağ tık menüsü mklink</value>
+	</data>
+</root>
