@@ -1,6 +1,6 @@
 #include "pch.hpp"
 using std::filesystem::exists, std::filesystem::is_directory, std::filesystem::path, std::format, std::wstring, std::wstring_view, winrt::check_bool, winrt::check_hresult, winrt::com_ptr, winrt::get_module_lock, winrt::hresult, winrt::hresult_error,
-	winrt::implements, winrt::make, winrt::throw_last_error, winrt::Windows::ApplicationModel::Resources::ResourceLoader;
+	winrt::hstring, winrt::implements, winrt::make, winrt::throw_last_error, winrt::Windows::ApplicationModel::Resources::ResourceLoader;
 
 /**
  * [Resource](https://learn.microsoft.com/en-us/uwp/api/windows.applicationmodel.resources.resourceloader) for the current non-UI-thread context.
@@ -11,12 +11,14 @@ static const auto resource = ResourceLoader::GetForViewIndependentUse();
 
 /**
  * Get a localized string resource.
+ *
+ * Returns by value (not a view) because `ResourceLoader::GetString` returns a temporary `hstring` whose buffer would otherwise be freed before use.
  * @param key The resource key
  * @return The localized string
  */
 [[nodiscard("Pure function")]]
-static const wchar_t* LOC(wstring_view key) {
-	return resource.GetString(key).c_str();
+static hstring LOC(wstring_view key) {
+	return resource.GetString(key);
 }
 
 /**
@@ -147,7 +149,7 @@ protected:
 		catch (const hresult_error e) {
 			const auto code = e.code();
 			if (uint16_t(code) != ERROR_ACCESS_DENIED) [[unlikely]] {
-				MessageBoxW(nullptr, e.message().c_str(), LOC(L"Command.Error"), MB_ICONERROR);
+				MessageBoxW(nullptr, e.message().c_str(), LOC(L"Command.Error").c_str(), MB_ICONERROR);
 				return code;
 			}
 			operation = L"runas";
@@ -183,11 +185,11 @@ private:
 	/**
 	 * The title of the command
 	 */
-	const wstring_view title;
+	const wstring title;
 	/**
 	 * The tooltip of the command. Seems unused.
 	 */
-	const wstring_view tip;
+	const wstring tip;
 	/**
 	 * The executable of the command. Default is `cmd`.
 	 */
@@ -619,7 +621,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 	 * @return `S_OK` on success, most likely
 	 */
 	HRESULT GetTitle([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszName) {
-		return SHStrDupW(LOC(L"Mklink.GetTitle"), ppszName);
+		return SHStrDupW(LOC(L"Mklink.GetTitle").c_str(), ppszName);
 	}
 
 	/**
@@ -629,7 +631,7 @@ struct Mklink : implements<Mklink, IExplorerCommand, IObjectWithSite> {
 	 * @return `S_OK` on success, most likely
 	 */
 	HRESULT GetToolTip([[maybe_unused]] IShellItemArray* psiItemArray, LPWSTR* ppszInfotip) {
-		return SHStrDupW(LOC(L"Mklink.GetToolTip"), ppszInfotip);
+		return SHStrDupW(LOC(L"Mklink.GetToolTip").c_str(), ppszInfotip);
 	}
 
 	/**
