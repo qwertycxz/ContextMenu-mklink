@@ -4,7 +4,7 @@ Create symbolic link, hard link (and more!) in context menu. Windows 11 context 
 
 ![Screenshot to English](assets/English.png)
 
-Fully i18n support! (Now support Simplified Chinese)
+Fully i18n support! (Now support over 17 languages)
 
 ![Screenshot to Chinese](assets/Chinese.png)
 
