@@ -3,6 +3,22 @@ jobs:
   check:
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Inspect installed GCC targets
+        run: |
+          Get-Command gcc, g++ -All -ErrorAction SilentlyContinue |
+            Select-Object Name, Source
+
+          $roots = @('C:\mingw64', 'C:\msys64')
+          foreach ($root in $roots) {
+            if (Test-Path $root) {
+              Get-ChildItem -LiteralPath $root -Recurse -File -Filter '*gcc.exe' |
+                ForEach-Object {
+                  Write-Host "`nCompiler: $($_.FullName)"
+                  & $_.FullName -dumpmachine
+                }
+            }
+          }
+        shell: pwsh
       - run: git config --global core.autocrlf false
       - uses: actions/checkout@main
       - uses: xmake-io/github-action-setup-xmake@3a1a5dddfc7fa625d9a698738334bf55655a861a
