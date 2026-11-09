@@ -26,6 +26,7 @@ on_load(function (target)
 	end
 	target:set('basename', target:arch())
 	target:set('configdir', target:targetdir())
+	target:set('version', '0.0.0.0')
 	try{function ()
 		local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
 		if commit == '' then
