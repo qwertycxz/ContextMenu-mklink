@@ -126,7 +126,7 @@ on_package(function (package)
 			v:targetdir(),
 			'-o',
 			'-p',
-			package:outputdir() .. '/' .. v:name() .. '-' .. arch .. '.msix',
+			package:outputdir() .. '/' .. arch .. '.msix',
 		})
 	end
 end)
