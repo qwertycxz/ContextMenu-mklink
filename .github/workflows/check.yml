@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://schemastore.org/github-workflow
 jobs:
   check:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - run: git config --global core.autocrlf false
       - uses: actions/checkout@main
@@ -11,8 +11,20 @@ jobs:
       - run: xmake format:check
       - uses: qwertycxz/setup-cim@7c20746d99fe17535118b7d0edd6a75c0ab268a8
       - run: xmake check syntax
+      - run: xmake pack
+      - uses: actions/upload-artifact@main
+        with:
+          archive: false
+          path: build/xpack/msix/*
+    strategy:
+      matrix:
+        os:
+          - windows-11-arm
+          - windows-2025
 on:
-  - pull_request
-  - push
+  pull_request:
+  push:
+    branches:
+      - '**'
 permissions:
   contents: read

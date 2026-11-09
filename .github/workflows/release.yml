@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://schemastore.org/github-workflow
 jobs:
-  check:
-    runs-on: windows-latest
+  pack:
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@main
       - uses: qwertycxz/setup-cim@7c20746d99fe17535118b7d0edd6a75c0ab268a8
@@ -9,11 +9,27 @@ jobs:
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
       - run: xmake pack
+      - uses: actions/upload-artifact@main
+        with:
+          archive: false
+          path: build/xpack/msix/*
+    strategy:
+      matrix:
+        os:
+          - windows-11-arm
+          - windows-2025
+  release:
+    needs: pack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@main
+        with:
+          merge-multiple: true
       - uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3
         with:
           append_body: true
           discussion_category_name: Announcements
-          files: build/xpack/msix/*
+          files: '*'
           generate_release_notes: true
           make_latest: true
 on:
