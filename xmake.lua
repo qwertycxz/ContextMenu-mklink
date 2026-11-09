@@ -24,6 +24,7 @@ on_load(function (target)
 	else
 		target:set('pcxxheader', 'src/pch.hpp')
 	end
+	target:set('basename', target:arch())
 	target:set('configdir', target:targetdir())
 	try{function ()
 		local version, commit = os.iorun'git describe --match v* --tags':match'^v(%d+%.%d+%.%d+)%-?(%d*)'
