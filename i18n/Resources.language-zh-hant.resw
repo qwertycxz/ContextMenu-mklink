@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>新建連結</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>建立指向已複製的目錄或檔案的連結</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>符號連結（絕對）</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>無限制</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>符號連結（相對）</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>需相同磁碟區</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>硬連結</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>僅檔案，需相同磁碟區</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>目錄接合</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>僅目錄，需相同電腦</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>捷徑（.url）</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>網際網路捷徑</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>捷徑（.lnk）</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Shell 捷徑</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>錯誤</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>在右鍵功能表建立符號連結和硬連結。（支援 Windows 11 新右鍵功能表）</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>右鍵功能表 mklink</value>
+	</data>
+</root>

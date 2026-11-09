@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>링크 만들기</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>복사된 디렉터리 또는 파일에 대한 링크를 만듭니다</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>심볼릭 링크(절대)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>제한 없음</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>심볼릭 링크(상대)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>동일한 볼륨만 해당</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>하드 링크</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>파일 및 동일한 볼륨만 해당</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>디렉터리 접합</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>디렉터리 및 동일한 컴퓨터만 해당</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>바로 가기(.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>인터넷 바로 가기</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>바로 가기(.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>셸 링크</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>오류</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>상황에 맞는 메뉴에 심볼릭 링크와 하드 링크를 만듭니다. (Windows 11 상황에 맞는 메뉴 지원)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>상황에 맞는 메뉴 mklink</value>
+	</data>
+</root>

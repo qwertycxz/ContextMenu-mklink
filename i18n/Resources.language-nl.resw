@@ -1,0 +1,53 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/qwertycxz/resw-xsd/raw/master/resw.xsd">
+	<data name='Mklink.GetTitle' xml:space='preserve'>
+		<value>Koppeling maken</value>
+	</data>
+	<data name='Mklink.GetToolTip' xml:space='preserve'>
+		<value>Een koppeling maken naar de gekopieerde map of het gekopieerde bestand</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Symbolische koppeling (Absoluut)</value>
+	</data>
+	<data name='AbsoluteSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Geen beperkingen</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetTitle' xml:space='preserve'>
+		<value>Symbolische koppeling (Relatief)</value>
+	</data>
+	<data name='RelativeSymbolicLink.GetToolTip' xml:space='preserve'>
+		<value>Alleen hetzelfde volume</value>
+	</data>
+	<data name='HardLink.GetTitle' xml:space='preserve'>
+		<value>Harde koppeling</value>
+	</data>
+	<data name='HardLink.GetToolTip' xml:space='preserve'>
+		<value>Alleen bestanden en hetzelfde volume</value>
+	</data>
+	<data name='DirectoryJunction.GetTitle' xml:space='preserve'>
+		<value>Mapkoppeling</value>
+	</data>
+	<data name='DirectoryJunction.GetToolTip' xml:space='preserve'>
+		<value>Alleen mappen en dezelfde computer</value>
+	</data>
+	<data name='InternetShortcut.GetTitle' xml:space='preserve'>
+		<value>Snelkoppeling (.url)</value>
+	</data>
+	<data name='InternetShortcut.GetToolTip' xml:space='preserve'>
+		<value>Internetsnelkoppeling</value>
+	</data>
+	<data name='ShellLink.GetTitle' xml:space='preserve'>
+		<value>Snelkoppeling (.lnk)</value>
+	</data>
+	<data name='ShellLink.GetToolTip' xml:space='preserve'>
+		<value>Shell-koppeling</value>
+	</data>
+	<data name='Command.Error' xml:space='preserve'>
+		<value>Fout</value>
+	</data>
+	<data name='Manifest.Description' xml:space='preserve'>
+		<value>Maakt symbolische koppelingen en harde koppelingen in het contextmenu. (Windows 11-contextmenu wordt ondersteund)</value>
+	</data>
+	<data name='Manifest.DisplayName' xml:space='preserve'>
+		<value>Contextmenu mklink</value>
+	</data>
+</root>
