@@ -86,7 +86,7 @@ on_buildcmd_file(function (target, batchcmds, sourcefile, opt)
 	batchcmds:add_depfiles(sourcefile)
 	batchcmds:set_depmtime(os.mtime(targetfile))
 	batchcmds:show_progress(opt.progress, "${color.build.object}converting %s", sourcefile)
-	batchcmds:vrunv('cim -h 1000 -w 1000 png', {
+	batchcmds:vrunv('cim -s 1000x1000 png', {
 		sourcefile,
 		targetfile,
 	})
