@@ -8,9 +8,11 @@ jobs:
       - uses: xmake-io/github-action-setup-xmake@3a1a5dddfc7fa625d9a698738334bf55655a861a
         with:
           actions-cache-folder: ${{ runner.temp }}/xmake
-      - run: xmake format:check
+      - if: ${{ runner.arch == 'arm64' }}
+        run: xmake format:check
       - uses: qwertycxz/setup-cim@7c20746d99fe17535118b7d0edd6a75c0ab268a8
-      - run: xmake check syntax
+      - if: ${{ runner.arch == 'arm64' }}
+        run: xmake check syntax
       - run: xmake pack
       - uses: actions/upload-artifact@main
         with:
